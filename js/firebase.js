@@ -16,20 +16,40 @@ firebase.analytics();
 function boardWhite(){
     let fb= firebase.database()
 
+    // values
+    let project = document.getElementById('project').value;
+    let technical = document.getElementById('technical').value;
+    let start = document.getElementById('startdate').value;
+    let end = document.getElementById('enddate').value;
+    let team = document.getElementById('team').value;
+    let target = document.getElementById('target').value;
+    let develop = $('#develop').val();
+    let description = $('#description').val();
+    let url = document.getElementById('url').value;
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let ts = date+' '+time;
 
+    console.log(develop, description)
 
-    fb.ref('board/projects').set({
-        project:project,
-        ts:ts,
+    // input
+    fb.ref(`board/projects/${project}`).set({
+        name:project,
         technical:technical,
-        during:during,
+        during:{
+            "start":start,
+            "end":end
+        },
         team:team,
         target:target,
         develop:develop,
         description:description,
-        issue:issue,
         url:url,
+        ts:ts,
     });
+
+    setTimeout(() => window.location.href='https://kokbee.github.io/index.html',1500);
 }
 
 function boardRead(){
@@ -38,7 +58,3 @@ function boardRead(){
         console.log(data.val())
     })
 }
-
-$(document).ready(function() {
-    boardRead();
-});
