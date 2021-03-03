@@ -23,14 +23,12 @@ function boardWhite(){
         ts:ts,
         technical:technical,
         during:during,
-        author:author,
-        work:work,
         team:team,
-        text:text,
+        target:target,
+        develop:develop,
         description:description,
         issue:issue,
         url:url,
-        tag:tag,
     });
 }
 
@@ -40,3 +38,7 @@ function boardRead(){
         console.log(data.val())
     })
 }
+
+$(document).ready(function() {
+    boardRead();
+});
