@@ -8,10 +8,9 @@ var firebaseConfig = {
     appId: "1:243003904340:web:abd4b6f3305fa9953cb8c1",
     measurementId: "G-ZZDP4QSF3R"
   };
-// Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-
 
 function boardWhite(){
     let fb= firebase.database()
@@ -50,11 +49,30 @@ function boardWhite(){
     });
 
     setTimeout(() => window.location.href='https://kokbee.github.io/index.html',1500);
-}
+};
 
 function boardRead(){
     let fb= firebase.database()
+    let fbdata;
+
     fb.ref("board/projects").on("value", function(data){
-        console.log(data.val())
+        fbdata = data.val();
+        if (fbdata != null){
+            let text = `
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="flex-grow-1">
+                    <h4 class="mb-0"></h4>
+                    <li></li>
+                    <li></li>
+                </div>
+            </div>
+            `;
+            console.log(fbdata);
+
+
+        }else{
+            return
+        }
+
     })
-}
+};
