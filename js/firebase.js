@@ -97,6 +97,7 @@ function boardRead(){
                         <li>참고 URL : ${proUrl}</li>
                         <li>제작 기간 : ${proDuring}</li>
                     </div>
+                    <div style="font-size:6px;" >Update : ${proTs}</div>
                 `;
 
                 addDiv.innerHTML = text;
