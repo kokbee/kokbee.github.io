@@ -57,19 +57,52 @@ function boardRead(){
 
     fb.ref("board/projects").on("value", function(data){
         fbdata = data.val();
+
+        let projectDiv = document.getElementById('projects');
+
         if (fbdata != null){
-            let text = `
-            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                <div class="flex-grow-1">
-                    <h4 class="mb-0"></h4>
-                    <li></li>
-                    <li></li>
-                </div>
-            </div>
-            `;
-            console.log(fbdata);
+            for (let pro in fbdata){
+                let proName = null;
+                let proTeam = null;
+                let proDev = null;
+                let proDesc = null;
+                let proTraget = null;
+                let proTech = null;
+                let proUrl = null;
+                let proTs = null;
+                let proDuring = null;
 
+                proName = fbdata[pro]['name'];
+                proTeam = fbdata[pro]['team'];
+                proDev = fbdata[pro]['develop'];
+                proDesc = fbdata[pro]['desciption'];                proName = fbdata[pro]['name'];
+                proTraget = fbdata[pro]['target'];                proName = fbdata[pro]['name'];
+                proTech = fbdata[pro]['technical'];                proName = fbdata[pro]['name'];
+                proUrl = fbdata[pro]['url'];                proName = fbdata[pro]['name'];
+                proTs = fbdata[pro]['ts'];
+                proDuring = fbdata[pro]['during'];               
 
+                let addDiv = document.createElement('div');
+                addDiv.setAttribute('id', `pro_${proName}`)
+                addDiv.setAttribute('class',"d-flex flex-column flex-md-row justify-content-between mb-5" )
+
+                let text = `
+                    <div class="flex-grow-1">
+                        <h4 class="mb-0">${proName}</h4>
+                        <li>구성원 : ${proTeam}</li>
+                        <li>개발 내용 : ${proDev}</li>
+                        <li>설명 : ${proDesc}</li>
+                        <li>사용 대상 : ${proTraget}</li>
+                        <li>사용된 기술 : ${proTech}</li>
+                        <li>참고 URL : ${proUrl}</li>
+                        <li>제작 기간 : ${proDuring}</li>
+                    </div>
+                `;
+
+                addDiv.innerHTML = text;
+                projectDiv.appendChild(addDiv)
+
+            }
         }else{
             return
         }
