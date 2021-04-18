@@ -97,7 +97,7 @@ function boardRead(){
                         <li><b>사용 대상</b> : ${proTraget}</li>
                         <li><b>개발 내용</b>  <div class="card-body">${proDev}</div></li>
                         <li><b>기타 내용</b>  <div class="card-body">${proDesc}</div></li>
-                        <li><b>참고 URL</b>  : <div class="card-body">${proUrl}</div></li>
+                        <li><b>URL</b>  : <div class="card-body">${proUrl}</div></li>
                     </div>
                     <div style="font-size:6px;" >Update : ${proTs}</div>
                 `;
