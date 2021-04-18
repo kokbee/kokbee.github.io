@@ -75,10 +75,10 @@ function boardRead(){
                 proName = fbdata[pro]['name'];
                 proTeam = fbdata[pro]['team'];
                 proDev = fbdata[pro]['develop'];
-                proDesc = fbdata[pro]['description'];                proName = fbdata[pro]['name'];
-                proTraget = fbdata[pro]['target'];                proName = fbdata[pro]['name'];
-                proTech = fbdata[pro]['technical'];                proName = fbdata[pro]['name'];
-                proUrl = fbdata[pro]['url'];                proName = fbdata[pro]['name'];
+                proDesc = fbdata[pro]['description'];
+                proTraget = fbdata[pro]['target'];
+                proTech = fbdata[pro]['technical'];
+                proUrl = fbdata[pro]['url'];              
                 proTs = fbdata[pro]['ts'];
                 proDuring = fbdata[pro]['during'];  
                 
