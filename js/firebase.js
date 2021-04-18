@@ -75,12 +75,14 @@ function boardRead(){
                 proName = fbdata[pro]['name'];
                 proTeam = fbdata[pro]['team'];
                 proDev = fbdata[pro]['develop'];
-                proDesc = fbdata[pro]['desciption'];                proName = fbdata[pro]['name'];
+                proDesc = fbdata[pro]['description'];                proName = fbdata[pro]['name'];
                 proTraget = fbdata[pro]['target'];                proName = fbdata[pro]['name'];
                 proTech = fbdata[pro]['technical'];                proName = fbdata[pro]['name'];
                 proUrl = fbdata[pro]['url'];                proName = fbdata[pro]['name'];
                 proTs = fbdata[pro]['ts'];
-                proDuring = fbdata[pro]['during'];               
+                proDuring = fbdata[pro]['during'];  
+                
+
 
                 let addDiv = document.createElement('div');
                 addDiv.setAttribute('id', `pro_${proName}`)
@@ -88,14 +90,14 @@ function boardRead(){
 
                 let text = `
                     <div class="flex-grow-1">
-                        <h4 class="mb-0">${proName}</h4>
-                        <li>구성원 : ${proTeam}</li>
-                        <li>개발 내용 : ${proDev}</li>
-                        <li>설명 : ${proDesc}</li>
-                        <li>사용 대상 : ${proTraget}</li>
-                        <li>사용된 기술 : ${proTech}</li>
-                        <li>참고 URL : ${proUrl}</li>
-                        <li>제작 기간 : ${proDuring}</li>
+                        <h3 class="mb-0">${proName}</h3>
+                        <li><b>제작 기간</b> : ${proDuring.start} - ${proDuring.end}</li>
+                        <li><b>구성원</b> : ${proTeam}</li>
+                        <li><b>사용된 기술</b> : ${proTech}</li>
+                        <li><b>사용 대상</b> : ${proTraget}</li>
+                        <li><b>개발 내용</b>  <div class="card-body">${proDev}</div></li>
+                        <li><b>기타 내용</b>  <div class="card-body">${proDesc}</div></li>
+                        <li><b>참고 URL</b>  : <div class="card-body">${proUrl}</div></li>
                     </div>
                     <div style="font-size:6px;" >Update : ${proTs}</div>
                 `;
