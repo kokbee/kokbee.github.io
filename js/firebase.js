@@ -71,6 +71,7 @@ function boardRead(){
                 let proUrl = null;
                 let proTs = null;
                 let proDuring = null;
+                let proImage = null;
 
                 proName = fbdata[pro]['name'];
                 proTeam = fbdata[pro]['team'];
@@ -80,13 +81,38 @@ function boardRead(){
                 proTech = fbdata[pro]['technical'];
                 proUrl = fbdata[pro]['url'];              
                 proTs = fbdata[pro]['ts'];
-                proDuring = fbdata[pro]['during'];  
-
-                console.log(proUrl)
+                proDuring = fbdata[pro]['during'];
+                proImage = fbdata[pro]['img'];  
                 
+                if (proImage != ""){
+                    proImage = `
+                    <button type="button" class="btn btn-link btn-sm"" data-toggle="modal" data-target="#${proName}Modal">Pico</button>
+                    
+                    <div class="modal fade" id="${proName}Modal" tabindex="-1" role="dialog" aria-labelledby="${proName}ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="${proName}ModalLabel">Reference</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="${proImage}" alt="" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>                    
+                    `
+                }
+
                 if (proUrl != ""){
                     proUrl = `<a href="${proUrl}">${proName}</a>`
                 }
+
 
                 let addDiv = document.createElement('div');
                 addDiv.setAttribute('id', `pro_${proName}`)
@@ -102,6 +128,7 @@ function boardRead(){
                         <li><b>개발 내용</b>  <div class="card-body">${proDev}</div></li>
                         <li><b>기타 내용</b>  <div class="card-body">${proDesc}</div></li>
                         <li><b>URL</b>  : ${proUrl}</li>
+                        <li><b>이미지</b>  :${proImage}</li>
                     </div>
                     <div style="font-size:6px;" >Update : ${proTs}</div>
                 `;
