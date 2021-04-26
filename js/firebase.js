@@ -25,6 +25,7 @@ function boardWhite(){
     let develop = $('#develop').val();
     let description = $('#description').val();
     let url = document.getElementById('url').value;
+    let image = document.getElementById('image').value;
     let today = new Date();
     let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -46,6 +47,7 @@ function boardWhite(){
         description:description,
         url:url,
         ts:ts,
+        img:image,
     });
 
     setTimeout(() => window.location.href='https://kokbee.github.io/index.html',1500);
