@@ -88,7 +88,7 @@ function boardRead(){
                 
                 if (proImage != ""){
                     proImage = `
-                    <a class="btn btn-link btn-sm"" data-toggle="modal" data-target="#${proName}Modal">Pico</a>
+                    <a class="btn btn-link btn-sm"" data-toggle="modal" data-target="#${proName}Modal">${proName}</a>
                     
                     <div class="modal fade" id="${proName}Modal" tabindex="-1" role="dialog" aria-labelledby="${proName}ModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
