@@ -53,17 +53,38 @@ function boardWhite(){
     setTimeout(() => window.location.href='https://kokbee.github.io/index.html',1500);
 };
 
+
 function boardRead(){
     let fb= firebase.database()
     let fbdata;
 
     fb.ref("board/projects").on("value", function(data){
         fbdata = data.val();
-
-        let projectDiv = document.getElementById('projects');
+        let sortingData = []
 
         if (fbdata != null){
             for (let pro in fbdata){
+                let temp = {}
+                temp['name'] = fbdata[pro]['name'];
+                temp['team'] = fbdata[pro]['team'];
+                temp['develop'] = fbdata[pro]['develop'];
+                temp['description'] = fbdata[pro]['description'];
+                temp['target'] = fbdata[pro]['target'];
+                temp['technical'] = fbdata[pro]['technical'];
+                temp['url'] = fbdata[pro]['url'];              
+                temp['ts'] = fbdata[pro]['ts'];
+                temp['during'] = fbdata[pro]['during'];
+                temp['img'] = fbdata[pro]['img'];
+                sortingData.push(temp);
+            }
+        }
+
+        sortingData.sort(compareData);
+
+        let projectDiv = document.getElementById('projects');
+
+        if (sortingData != null){
+            for (let pro in sortingData){
                 let proName = null;
                 let proTeam = null;
                 let proDev = null;
@@ -75,16 +96,16 @@ function boardRead(){
                 let proDuring = null;
                 let proImage = null;
 
-                proName = fbdata[pro]['name'];
-                proTeam = fbdata[pro]['team'];
-                proDev = fbdata[pro]['develop'];
-                proDesc = fbdata[pro]['description'];
-                proTraget = fbdata[pro]['target'];
-                proTech = fbdata[pro]['technical'];
-                proUrl = fbdata[pro]['url'];              
-                proTs = fbdata[pro]['ts'];
-                proDuring = fbdata[pro]['during'];
-                proImage = fbdata[pro]['img'];  
+                proName = sortingData[pro]['name'];
+                proTeam = sortingData[pro]['team'];
+                proDev = sortingData[pro]['develop'];
+                proDesc = sortingData[pro]['description'];
+                proTraget = sortingData[pro]['target'];
+                proTech = sortingData[pro]['technical'];
+                proUrl = sortingData[pro]['url'];              
+                proTs = sortingData[pro]['ts'];
+                proDuring = sortingData[pro]['during'];
+                proImage = sortingData[pro]['img'];  
                 
                 if (proImage != ""){
                     proImage = `
@@ -145,3 +166,11 @@ function boardRead(){
 
     })
 };
+
+
+function compareData(data1, data2) {
+    let date1 = data1.during.end;
+    let date2 = data2.during.end;
+
+    return date1 < date2 ? 1: -1;
+}
