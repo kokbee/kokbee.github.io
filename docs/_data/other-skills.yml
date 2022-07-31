@@ -1,0 +1,11 @@
+- name: Adobe Photoshop
+  percentage: 70
+  color: info
+
+- name: Final Cut
+  percentage: 50
+  color:
+
+- name: Adobe aftereffect
+  percentage: 50
+  color: secondary

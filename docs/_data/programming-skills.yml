@@ -1,0 +1,11 @@
+- name: Javascript/Typescript
+  percentage: 55
+  color: success
+
+- name: Python
+  percentage: 50
+  color: warning
+
+- name: Go
+  percentage: 30
+  color:
